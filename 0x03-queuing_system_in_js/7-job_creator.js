@@ -57,13 +57,13 @@ jobs.forEach((data) => {
       console.log('Notification job created', job.id);
     })
     .on('complete', () => {
-      console.log('Notification job', job.id, 'completed');
+      console.log('Notification job', '#'+job.id, 'completed');
     })
-    .on('failed', () => {
-      console.log('Notification job', job.id, 'failed');
+    .on('failed', (err) => {
+      console.log('Notification job', '#'+job.id, 'failed', err.message || err);
     })
     .on('progress', (progress, _) => {
-      console.log('Notification job', job.id, progress+'%', 'complete');
+      console.log('Notification job', '#'+job.id, progress+'%', 'complete');
     })
     .save();
 })
