@@ -19,3 +19,13 @@ client.subscribe('holberton school channel', function(err, count) {
     console.log(`Subscribed to ${count} channels`);
   }
 });
+
+client.on('message', function(channel, message) {
+  if(channel === 'holberton school channel') {
+    console.log(message);
+  }
+  if (message === 'KILL_SERVER') {
+    client.unsubscribe();
+    client.quit();
+  }
+})
